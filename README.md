@@ -18,18 +18,38 @@ This API is implemented in order to integrate front-end with Galaxy through a Re
 1. Checkout project
 2. Open command prompt
 3. Navigate to project directory
-4. Make your own application.properties file :
+4. Create settings Java parameters file :
     ```sh
-    vi src/main/resources/application.properties
+    vi src/main/java/gr/di/uoa/kk/gatewayApi/helpers/GenParameters.java
     ```
-5. You can follow this template for application.properties file :
+5. You can follow this template in order to make the Java parameters file :
+    ```java
+    package gr.di.uoa.kk.gatewayApi.helpers;
+    
+    public class GenParameters {
+        private static final String jwtSecret = "";
+        private static final String jwtIssuer = "";
+        private static final String galaxyURL = "";
+        private static final String galaxyApiKey = "";   
+    
+        public static String getJwtSecret() {
+            return jwtSecret;
+        }
+    
+        public static String getJwtIssuer() {
+            return jwtIssuer;
+        }
+    
+        public static String getGalaxyURL() {
+            return galaxyURL;
+        }
+    
+        public static String getGalaxyApiKey() {
+            return galaxyApiKey;
+        }
+    }
     ```
-    # App Properties
-    kk.app.jwtSecret=theJwtSecret
-    kk.app.jwtIssuer=theJwtIssuer
-    kk.app.galaxyURL=YourGalaxyURL
-    kk.app.galaxyApiKey=YourGalaxyApiKey
-    ```
+
 6. In the project directory :
     ```sh
     gradle clean
@@ -49,5 +69,3 @@ This API is implemented in order to integrate front-end with Galaxy through a Re
 2. Stop Application Server if running(i.e. In [Tomcat](http://tomcat.apache.org/) navigate to root directory and run ```./bin/shutdown.sh ```)
 3. Copy .war file in the application folder(i.e. In [Tomcat](http://tomcat.apache.org/) navigate to root directory and copy into webapps directory ```cp path/to/war webapps/ ```)
 4. Start Application Server(i.e. In [Tomcat](http://tomcat.apache.org/) navigate to root directory and run ```./bin/startup.sh ```)
-
-## Deploy:
